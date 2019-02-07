@@ -47,20 +47,20 @@ export class PostComponent implements OnInit {
       .subscribe(updatedPost => console.log(updatedPost))
   }
 
-  deletePost(post){
-    // this.service.deletePost(post.id).subscribe(
-    this.service.delete(365).subscribe(
-      ()=> {
-        let index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-      },
-      (error: AppError) => {
-        if(error instanceof NotFoundError)
-          alert('This Post has already been delete');
-        else throw error;
-      }
-    );
-  }
+  // deletePost(post){
+  //   // this.service.deletePost(post.id).subscribe(
+  //   this.service.delete(365).subscribe(
+  //     ()=> {
+  //       let index = this.posts.indexOf(post);
+  //       this.posts.splice(index, 1);
+  //     },
+  //     (error: AppError) => {
+  //       if(error instanceof NotFoundError)
+  //         alert('This Post has already been delete');
+  //       else throw error;
+  //     }
+  //   );
+  // }
 }
 
 /* therea are multiple life cycle hooks in Angular

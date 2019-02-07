@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { AppError } from '../common/app-errors';
 import { NotFoundError } from '../common/not-found-error';
 import { BadInput } from '../common/bad-input';
-import { DataService } from '../common/data.services';
+import { DataService } from '../services/data.service';
 
 @Injectable()
 export class PostService extends DataService{

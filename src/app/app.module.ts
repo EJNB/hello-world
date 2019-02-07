@@ -9,6 +9,7 @@ import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course/course.component';
 import { CoursesService } from './services/courses.service';
 import { SummaryPipe } from './pipes/summary.pipe';
+import { TitleCasePipe } from './title-case.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { BootstrapComponent } from './bootstrap/bootstrap.component';
 import { InputFormatDirective } from './input-format.directive';
@@ -25,7 +26,10 @@ import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PostsComponent} from './posts/posts.component';
-
+import { AuthorsService } from './authors.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AuthorsComponent } from './authors/authors.component';
+import { GithubFollowersService } from './services/github-followers.service';
 
 @NgModule({
   declarations: [
@@ -33,13 +37,17 @@ import { PostsComponent} from './posts/posts.component';
     CoursesComponent,
     CourseComponent,
     SummaryPipe,
+    TitleCasePipe,
     FavoriteComponent,
     BootstrapComponent,
     InputFormatDirective,
+    AuthorsComponent,
     ContactFormComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    PostComponent,
+    ChangePasswordComponent,
+    //PostComponent,
+    PostsComponent,
     GithubFollowersComponent,
     NavbarComponent,
     HomeComponent,
@@ -53,8 +61,8 @@ import { PostsComponent} from './posts/posts.component';
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'followers/:username', component : GithubProfileComponent },
-      { path: 'fallowers', component : GithubFollowersComponent },
+      { path: 'followers/:id/:username', component : GithubProfileComponent },
+      { path: 'followers', component : GithubFollowersComponent },
       { path: 'posts', component: PostsComponent },
       { path: '**', component: NotFoundComponent }
     ])
@@ -62,6 +70,8 @@ import { PostsComponent} from './posts/posts.component';
   providers: [
     CoursesService,
     PostService,
+    AuthorsService,
+    GithubFollowersService,
     //con est obj le dicmos a Angular q estoy ErrorHandler, en su lugar use esta nueva clase AppError
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
