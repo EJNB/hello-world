@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoursesService } from './sevices/courses.service';
 
 @Component({
   selector: 'courses',
@@ -12,7 +13,11 @@ import { Component } from '@angular/core';
 })
 export class CoursesComponent{
   title = "List of courses";
-  courses: string[] = ["C#", "Angular", "ElasticSearch"];
+  courses;
+
+  constructor(private _service: CoursesService){
+    this.courses = _service.getCourses();
+  }
 
   getTitle(){
     return this.title;
