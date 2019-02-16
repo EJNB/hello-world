@@ -8,7 +8,16 @@ import { FavoriteChangedEventArgs } from './favorite/favorite.component';
 })
 export class AppComponent { 
 
-  courses = [1,2];
+  courses = [
+    { id: 1, name: 'C Sharp'},
+    { id: 2, name: 'Nodejs'},
+    { id: 3, name: 'Exoressjs'},
+    { id: 4, name: 'Mongodb'},
+    { id: 5, name: 'Mongoose'},
+    { id: 6, name: 'ElasticSearch'},
+    { id: 7, name: 'SQL'},
+  ];
+  viewMap = "somethinElse";
 
   post = {
     title: "Angular app",
@@ -17,5 +26,9 @@ export class AppComponent {
 
   onFavoriteChange(isFavorite: FavoriteChangedEventArgs ){
     console.log(isFavorite.newValue);    
+  }
+
+  addCourse(){
+    this.courses.push({id:8, name: ".Net Core"})
   }
 }

@@ -15,3 +15,21 @@
 <ng-template #noCourses>
   No course yet
 </ng-template>
+
+<br>
+<ul class="nav nav-pills">
+  <li [class.active]="viewMode =='map'"><a href="" (click)="viewMode='map'">Map View</a></li>
+  <li [class.active]="viewMode =='list'"><a href="" (click)="viewMode='list'">List View</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">Map view content</div>
+  <div *ngSwitchCase="'list'">List view content</div>
+  <div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<br>
+<h2>List of courses<small> [ *NgFor Directive]</small></h2>
+<ul>
+  <li *ngFor="let course of courses; index as i">{{ i }}. {{ course.name }}</li>
+</ul>
+<button class="btn btn-success" (click)="addCourse()">Add Course</button>
