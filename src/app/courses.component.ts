@@ -12,7 +12,8 @@ import { CoursesService } from './sevices/courses.service';
     </table>
 
     <button [style.backgroundColor]="isActive ? 'blue' : 'white' " class="btn btn-primary" [class.active]="isActive">Save</button>
-    <button (click)="onSave($event)" class="btn btn-default">Clic me</button>
+    <button (click)="onSave($event)" class="btn btn-default">Clic me</button><br>
+    <input #email (keyup.enter)="onKeyUp($event,email.value)" type="email" class="form-control"/>
   `
 })
 export class CoursesComponent{
@@ -28,6 +29,11 @@ export class CoursesComponent{
   onSave($event){
     alert("Hello world");
     console.log($event)
+  }
+
+  onKeyUp($event, email){
+    console.log("the key Enter Key was pressed", $event.target.value);
+    console.log(email);
   }
 
   getTitle(){
