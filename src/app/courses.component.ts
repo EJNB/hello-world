@@ -12,6 +12,7 @@ import { CoursesService } from './sevices/courses.service';
     </table>
 
     <button [style.backgroundColor]="isActive ? 'blue' : 'white' " class="btn btn-primary" [class.active]="isActive">Save</button>
+    <button (click)="onSave($event)" class="btn btn-default">Clic me</button>
   `
 })
 export class CoursesComponent{
@@ -22,6 +23,11 @@ export class CoursesComponent{
 
   constructor(private _service: CoursesService){
     this.courses = _service.getCourses();
+  }
+
+  onSave($event){
+    alert("Hello world");
+    console.log($event)
   }
 
   getTitle(){
