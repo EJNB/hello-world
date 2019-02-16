@@ -5,18 +5,17 @@ import { CoursesService } from './sevices/courses.service';
   selector: 'courses',
   template: `
     <h2>{{ title }}</h2>
-    <h2 [textContent]="title"></h2>
-    <p>{{ getTitle() }}</p>
-    <ul>
-      <li *ngFor="let c of courses">{{ c }}</li>
-    </ul>
-
-    <url [src]="title" />
+    <table>
+      <tr>
+        <td [attr.colspan]="colSpan"></td>
+      </tr>
+    </table>
   `
 })
 export class CoursesComponent{
   title = "List of courses";
   courses;
+  colSpan = 2;
 
   constructor(private _service: CoursesService){
     this.courses = _service.getCourses();
