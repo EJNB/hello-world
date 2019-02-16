@@ -30,6 +30,8 @@
 <br>
 <h2>List of courses<small> [ *NgFor Directive]</small></h2>
 <ul>
-  <li *ngFor="let course of courses; index as i">{{ i }}. {{ course.name }}</li>
+  <li *ngFor="let course of courses; index as i">{{ +1 }}. {{ course.name }} 
+    <a (click)="removeCourse(course)"><span class="glyphicon glyphicon-trash"></span></a>
+  </li>
 </ul>
 <button class="btn btn-success" (click)="addCourse()">Add Course</button>

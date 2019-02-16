@@ -31,4 +31,9 @@ export class AppComponent {
   addCourse(){
     this.courses.push({id:8, name: ".Net Core"})
   }
+
+  removeCourse(course){
+    let index = this.courses.indexOf(course);
+    this.courses.splice(index, 1);
+  }
 }
