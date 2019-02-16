@@ -9,6 +9,7 @@ import { CourseComponent } from './course/course.component';
 import { CoursesService } from './sevices/courses.service';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { BootstrapComponent } from './bootstrap/bootstrap.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
     CourseComponent,
     SummaryPipe,
     FavoriteComponent,
+    BootstrapComponent,
   ],
   imports: [
     BrowserModule,
