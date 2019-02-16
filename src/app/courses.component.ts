@@ -19,6 +19,10 @@ import { CoursesService } from './sevices/courses.service';
       {{ course.price | currency:'AUD':true:'3.2-2' }}<br>
       {{ course.releaseDate | date:'shortDate' }}<br>
     </div>
+
+    <div>
+      {{ text | summary }}
+    </div>
   `
 })
 export class CoursesComponent{
@@ -30,6 +34,7 @@ export class CoursesComponent{
     releaseDate: new Date(2016,3,1)
   }
 
+  text = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. `;
   email = "me@example.com";
 
   onKeyUp(){    
