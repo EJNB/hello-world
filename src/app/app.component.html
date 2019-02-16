@@ -1,3 +1,11 @@
+<!--Atribute binding-->
+<button 
+  [style.backgroundColor]="canSave ? 'blue': 'gray'"
+  [style.color]="canSave ? 'white': 'black'"
+  [style.fontWeigth]="canSave ? 'bold': 'normal'"
+>Save</button>
+
+<br>
 <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
 
 <bootstrap-component>
@@ -35,3 +43,21 @@
   </li>
 </ul>
 <button class="btn btn-success" (click)="addCourse()">Add Course</button>
+
+<br>
+<!--Ng Style-->
+<button 
+  [style.backgroundColor]="canSave ? 'blue': 'gray'"
+  [style.color]="canSave ? 'white': 'black'"
+  [style.fontWeigth]="canSave ? 'bold': 'normal'"
+
+  [ngStyle]="{
+    backgroundColor: canSave ? 'blue': 'gray',
+    color: canSave ? 'white': 'black',
+    fontWeigth: canSave ? 'bold': 'normal'
+  }"
+>Save</button>
+
+<br>
+
+<span>{{ task.assigne?.name }}</span>

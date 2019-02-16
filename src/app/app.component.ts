@@ -18,11 +18,19 @@ export class AppComponent {
     { id: 7, name: 'SQL'},
   ];
   viewMap = "somethinElse";
+  canSave= true;
 
   post = {
     title: "Angular app",
     isFavorite: true
   };
+
+  task= {
+    title: "Review applications",
+    assigne: {
+      name: null
+    }
+  }
 
   onFavoriteChange(isFavorite: FavoriteChangedEventArgs ){
     console.log(isFavorite.newValue);    
