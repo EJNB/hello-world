@@ -1,5 +1,7 @@
-<form [formGroup]="form">
-
+<form [formGroup]="form" (ngSubmit)="loggin()">
+  <div *ngIf="form.errors" class="alert alert-danger">
+    The username or password is invalid.
+  </div>
   <!-- username -->
   <div class="form-group">
     <label for="username">Username</label>
@@ -9,6 +11,7 @@
       type="text" 
       class="form-control"
     />
+    <div *ngIf="username.pending">Checking for uniqueness.....</div>
     <div *ngIf="form.get('username').touched && form.get('username').invalid" class="alert alert-danger">
       <div *ngIf="username.errors.required">Username is required.</div>
       <div *ngIf="username.errors.minlength">Username should be minimun {{ username.errors.minlength.requiredLength }} caracters.</div>

@@ -22,4 +22,16 @@ export class SignupFormComponent {
   get username(){
     return this.form.get('username');
   }
+
+  loggin(){
+    this.form.setErrors({
+      invalidLogin: true
+    });
+    /* let isValid = authService.login(this.form.value );
+    if(isValid){
+      this.form.setErrors({
+        invalidLogin: true
+      })
+    } */
+  }
 }
