@@ -1,4 +1,4 @@
-<form>
+<form #f="ngForm" (ngSubmit)="submit(f)">
   <div class="form-group">
     <label for="firstName">First Name</label>
     <input 
@@ -23,5 +23,23 @@
     <label for="comment">Comment</label>
     <textarea ngModel name="comment" id="comment" class="form-control" cols="30" rows="10"></textarea>
   </div>
-  <button class="btn btn-primary">Submit</button>
+
+  <!-- Checbox input -->
+  <div class="checbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubcribe"> Subscribe to mailing list
+    </label>
+  </div>
+
+  <!-- Dropdown input -->
+  <div class="form-group">
+    <label for="contactMethod">Contact Method</label>
+    <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+      <option value=""></option>
+      <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
+    </select>
+  </div>
+
+  <p>{{ f.value | json }}</p>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
