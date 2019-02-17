@@ -11,7 +11,7 @@ export class SummaryPipe implements PipeTransform {
       return null;
 
     let actualLimit = limit ? limit: 50;
-    return (<string>value).substr(0,25) + '....';
+    return (<string>value).substr(0,actualLimit) + '....';
   }
 
 }

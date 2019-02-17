@@ -1,8 +1,10 @@
 <form [formGroup]="form">
+
+  <!-- username -->
   <div class="form-group">
     <label for="username">Username</label>
     <input 
-      FormControlName="username"
+      formControlName="username"
       id="username" 
       type="text" 
       class="form-control"
@@ -10,16 +12,20 @@
     <div *ngIf="form.get('username').touched && form.get('username').invalid" class="alert alert-danger">
       <div *ngIf="username.errors.required">Username is required.</div>
       <div *ngIf="username.errors.minlength">Username should be minimun {{ username.errors.minlength.requiredLength }} caracters.</div>
+      <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div>
+      <div *ngIf="form.get('username').errors.shouldBeUnique">Username is already taken.</div>
     </div>
   </div>
+
+  <!-- password -->
   <div class="form-group">
     <label for="password">Password</label>
     <input 
-      FormControlName="password"
+      formControlName="password"
       id="password" 
       type="password" 
       class="form-control"
-    />
-    
+    />    
   </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
