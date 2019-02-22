@@ -6,8 +6,10 @@
 >Save</button>
 
 <br>
+<!-- Input and Output properties -->
 <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
 
+<!-- ngContent -->
 <bootstrap-component>
   <div class="heading">Heading</div>
   <div class="body">
@@ -16,6 +18,7 @@
   </div>
 </bootstrap-component>
 
+<!-- ngIf Directive -->
 <div  *ngIf="courses.length > 0; then coursesList; else noCourses"></div>
 <ng-template #coursesList>
   List of courses
@@ -25,11 +28,12 @@
 </ng-template>
 
 <br>
+<!-- NgSwitchCase Directive-->
 <ul class="nav nav-pills">
   <li [class.active]="viewMode =='map'"><a href="" (click)="viewMode='map'">Map View</a></li>
   <li [class.active]="viewMode =='list'"><a href="" (click)="viewMode='list'">List View</a></li>
 </ul>
-<div [ngSwitch]="viewMode">
+<div [ngSwitch]="vigewMode">
   <div *ngSwitchCase="'map'">Map view content</div>
   <div *ngSwitchCase="'list'">List view content</div>
   <div *ngSwitchDefault>Otherwise</div>
@@ -59,8 +63,8 @@
 >Save</button>
 
 <br>
-
-<span>{{ task.assigne?.name }}</span>
+<!-- Operador de navegacio segura -->
+<span>{{ task.assigne.name }}</span>
 
 <br>
 <input type="text" [appInputFormat]="'uppercase'" class="form-control" />
@@ -76,5 +80,10 @@
 <signup-form></signup-form>
 
 <br>
+<h3>FormArray </h3>
 <!-- FormArray -->
 <new-course-form></new-course-form> 
+
+<h3>Consuming http service</h3>
+<!-- Consuming http service -->
+<post></post>
