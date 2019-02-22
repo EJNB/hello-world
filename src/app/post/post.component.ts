@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { post } from 'selenium-webdriver/http';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'post',
@@ -8,13 +7,12 @@ import { post } from 'selenium-webdriver/http';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  posts: any[];
-  url: string = 'http://jsonplaceholder.typicode.com/posts';
+  posts: any[];  
 
-  constructor(private http: Http) {}
+  constructor(private service: PostService) {}
 
   ngOnInit() {
-    this.http.get(this.url)
+    this.service.getPosts()
       .subscribe(posts => {
         this.posts = posts.json();
       });
@@ -25,7 +23,7 @@ export class PostComponent implements OnInit {
     //console.log(title);
     let post = { title: input.value };
     input.value = '';
-    this.http.post(this.url, JSON.stringify(post))
+    this.service.createPost(post)
       .subscribe( response =>{ 
         post['id'] = response.json().id;
         this.posts.splice(0,0,post);
@@ -35,12 +33,12 @@ export class PostComponent implements OnInit {
 
   //update post
   updatePost(post){
-    this.http.patch(this.url+'/'+ post.id,JSON.stringify(post))
+    this.service.updatePOst(post)
       .subscribe(response => console.log(response))
   }
 
   deletePost(post){
-    this.http.delete(this.url +'/' + post.id).subscribe(response=> {
+    this.service.deletePost(post.id).subscribe(response=> {
       let index = this.posts.indexOf(post);
       this.posts.splice(index, 1);
     });
