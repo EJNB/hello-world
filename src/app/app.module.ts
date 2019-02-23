@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -17,6 +17,7 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { PostComponent } from './post/post.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app-error-handler';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { PostService } from './services/post.service';
   ],
   providers: [
     CoursesService,
-    PostService
+    PostService,
+    //con est obj le dicmos a Angular q estoy ErrorHandler, en su lugar use esta nueva clase AppError
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

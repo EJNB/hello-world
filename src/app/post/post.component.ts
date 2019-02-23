@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { Response } from '@angular/http';
+import { AppError } from '../common/app-errors';
+import { NotFoundError } from '../common/not-found-error';
+import { BadInput } from '../common/bad-input';
 
 @Component({
   selector: 'post',
@@ -15,12 +18,7 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     this.service.getPosts()
       .subscribe(
-        posts => this.posts = posts.json(),
-        error => {
-          alert('An unexpected error occurred.');
-          console.log(error);
-        }
-      );
+        posts => this.posts = posts.json());
   }
 
   //Este title recibido como argumento es de tipo HTMLInput
@@ -35,9 +33,9 @@ export class PostComponent implements OnInit {
           this.posts.splice(0,0,post);
           console.log(response.json())
         },
-        (error: Response)=> {
-          if(error.status == 400)
-            //this.form.setErrors(error.json());//como aprendimos en la seccion anterior reactive forms
+        (error: AppError) => {
+          if(error instanceof BadInput)
+            //this.form.setErrors(error.originalError);//como aprendimos en la seccion anterior reactive forms
           alert('An unexpected error occurred.');
           console.log(error);
         }
@@ -57,13 +55,10 @@ export class PostComponent implements OnInit {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
       },
-      (error: Response) => {
-        if(error.status === 404)
+      (error: AppError) => {
+        if(error instanceof NotFoundError)
           alert('This Post has already been delete');
-        else{
-          alert('An unexpected error occurred.');
-          console.log(error);
-        }
+        else throw error;
       }
     );
   }
