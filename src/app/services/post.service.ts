@@ -14,31 +14,41 @@ export class PostService {
   constructor(private http: Http) { }
 
   getPosts(){
-    return this.http.get(this.url);
+    return this.http.get(this.url)
+      .catch(this.handleError);
   }
 
   createPost(post){
     return this.http.post(this.url, JSON.stringify(post))
-      .catch((error: Response) => {
-        if(error.status == 400)
-          return Observable.throw(new BadInput());//expected error
-        return Observable.throw(new AppError(error.json()));//Unexpected error
-      })
+      /* .catch((error: Response) => {
+          if(error.status == 400)
+        return Observable.throw(new BadInput());//expected error
+      }) */
+      .catch(this.handleError)
   }
 
   updatePOst(post){
     return this.http.patch(this.url+'/'+ post.id,JSON.stringify(post))
+      .catch(this.handleError)
   }
 
   deletePost(id){
     return this.http.delete(this.url +'/' + id)
       /*aqui necesitamos retornar un obsevable q contenga un error, asi los consumidores de este servicio
       lo obtendran y haran algo con él*/
-      .catch((error: Response)=>{
-        if(error.status == 404)
-          return Observable.throw(new NotFoundError());
-        return Observable.throw(new AppError(error.json()));
-      });
+      /* if(error.status == 404)
+        return Observable.throw(new NotFoundError());
+      return Observable.throw(new AppError(error.json())); */
+      .catch(this.handleError);
+  }
+
+  private handleError(error){
+    if(error.status == 400)
+      return Observable.throw(new BadInput());//expected error
+
+    if(error.status == 404)
+      return Observable.throw(new NotFoundError());
+    return Observable.throw(new AppError(error.json()));
   }
 
 }
