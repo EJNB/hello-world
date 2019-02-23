@@ -1,36 +1,36 @@
 <!--Atribute binding-->
-<button 
+<!-- <button 
   [style.backgroundColor]="canSave ? 'blue': 'gray'"
   [style.color]="canSave ? 'white': 'black'"
   [style.fontWeigth]="canSave ? 'bold': 'normal'"
 >Save</button>
 
-<br>
+<br> -->
 <!-- Input and Output properties -->
-<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite>
+<!-- <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favorite> -->
 
 <!-- ngContent -->
-<bootstrap-component>
+<!-- <bootstrap-component>
   <div class="heading">Heading</div>
   <div class="body">
     <h2>Body</h2>
     <p>Some body here.....</p>
   </div>
-</bootstrap-component>
+</bootstrap-component> -->
 
 <!-- ngIf Directive -->
-<div  *ngIf="courses.length > 0; then coursesList; else noCourses"></div>
+<!-- <div  *ngIf="courses.length > 0; then coursesList; else noCourses"></div>
 <ng-template #coursesList>
   List of courses
 </ng-template>
 <ng-template #noCourses>
   No course yet
-</ng-template>
+</ng-template> -->
 
-<br>
+<!-- <br> -->
 <!-- NgSwitchCase Directive-->
-<ul class="nav nav-pills">
-  <li [class.active]="viewMode =='map'"><a href="" (click)="viewMode='map'">Map View</a></li>
+<!-- <ul class="nav nav-pills"> -->
+  <!-- <li [class.active]="viewMode =='map'"><a href="" (click)="viewMode='map'">Map View</a></li>
   <li [class.active]="viewMode =='list'"><a href="" (click)="viewMode='list'">List View</a></li>
 </ul>
 <div [ngSwitch]="vigewMode">
@@ -48,9 +48,9 @@
 </ul>
 <button class="btn btn-success" (click)="addCourse()">Add Course</button>
 
-<br>
+<br> -->
 <!--Ng Style-->
-<button 
+<!-- <button 
   [style.backgroundColor]="canSave ? 'blue': 'gray'"
   [style.color]="canSave ? 'white': 'black'"
   [style.fontWeigth]="canSave ? 'bold': 'normal'"
@@ -62,28 +62,30 @@
   }"
 >Save</button>
 
-<br>
+<br> -->
 <!-- Operador de navegacio segura -->
-<span>{{ task.assigne.name }}</span>
+<!-- <span>{{ task.assigne.name }}</span>
 
 <br>
 <input type="text" [appInputFormat]="'uppercase'" class="form-control" />
-<br>
+<br> -->
 
 <!--Template driven form-->
-<h2>Template driven form</h2>
-<contact-form></contact-form>
+<!-- <h2>Template driven form</h2>
+<contact-form></contact-form> -->
 
-<br>
+<!-- <br> -->
 <!-- Reactive forms -->
-<h3>Reactive forms</h3>
-<signup-form></signup-form>
+<!-- <h3>Reactive forms</h3>
+<signup-form></signup-form> -->
 
-<br>
-<h3>FormArray </h3>
+<!-- <br> -->
+<!-- <h3>FormArray </h3> -->
 <!-- FormArray -->
-<new-course-form></new-course-form> 
+<!-- <new-course-form></new-course-form>  -->
 
-<h3>Consuming http service</h3>
+<!-- <h3>Consuming http service</h3> -->
 <!-- Consuming http service -->
-<post></post>
+<!-- <post></post> -->
+
+<!-- Routing and navigation -->
