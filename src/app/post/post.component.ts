@@ -16,9 +16,8 @@ export class PostComponent implements OnInit {
   constructor(private service: PostService) {}
 
   ngOnInit() {
-    this.service.getPosts()
-      .subscribe(
-        posts => this.posts = posts.json());
+    this.service.getAll()
+      .subscribe(posts => this.posts = posts);
   }
 
   //Este title recibido como argumento es de tipo HTMLInput
@@ -26,12 +25,12 @@ export class PostComponent implements OnInit {
     //console.log(title);
     let post = { title: input.value };
     input.value = '';
-    this.service.createPost(post)
+    this.service.create(post)
       .subscribe(
-        response =>{ 
-          post['id'] = response.json().id;
+        newPost =>{ 
+          post['id'] = newPost.id;
           this.posts.splice(0,0,post);
-          console.log(response.json())
+          console.log(newPost)
         },
         (error: AppError) => {
           if(error instanceof BadInput)
@@ -44,14 +43,14 @@ export class PostComponent implements OnInit {
 
   //update post
   updatePost(post){
-    this.service.updatePOst(post)
-      .subscribe(response => console.log(response))
+    this.service.update(post)
+      .subscribe(updatedPost => console.log(updatedPost))
   }
 
   deletePost(post){
     // this.service.deletePost(post.id).subscribe(
-    this.service.deletePost(365).subscribe(
-      response=> {
+    this.service.delete(365).subscribe(
+      ()=> {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
       },
