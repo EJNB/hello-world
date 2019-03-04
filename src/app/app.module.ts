@@ -30,6 +30,9 @@ import { AuthorsService } from './authors.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { GithubFollowersService } from './services/github-followers.service';
+import { LikeComponent } from './like/like.component';
+import { ZippyComponent } from './zippy/zippy.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +49,16 @@ import { GithubFollowersService } from './services/github-followers.service';
     SignupFormComponent,
     NewCourseFormComponent,
     ChangePasswordComponent,
-    //PostComponent,
+    PostComponent,
     PostsComponent,
     GithubFollowersComponent,
     NavbarComponent,
     HomeComponent,
     GithubProfileComponent,
     NotFoundComponent,
+    LikeComponent,
+    ZippyComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
